@@ -1,4 +1,19 @@
-<div class="container mx-auto">
-  <h1 class="text-5xl text-grey-500 text-center font-serif py-4">Search Component</h1>
-  <p class="text-xl text-grey-300 text-center font-serif py-4 mx-8 md:mx-32 lg:mx-80">The story of how to build a reusable, dynamic, autocomplete search component with the help of Phoenix LiveView and AlpineJS</p>
+<div class="container mx-auto my-8">
+  <h1 class="text-5xl text-gray-900 text-center font-serif py-4">Search Component</h1>
+  <p class="text-xl text-gray-500 text-center font-serif py-4 mx-8 md:mx-32 lg:mx-80">The story of how to build a reusable, dynamic, autocomplete search component with the help of Phoenix LiveView and AlpineJS</p>
+
+  <%= live_component @socket,
+    AutocompleteSearchWeb.SearchComponent,
+    id: :search,
+    items: @available_items,
+    selected_items: @selected_items %>
+
+  <h3 class="text-2xl text-gray-900 text-center font-serif font-bold">Selected Items</h3>
+  <div class="flex flex-row p-4 justify-center">
+    <%= for item <- @selected_items do %>
+      <div class="px-4 py-2 mx-2 bg-white rounded shadow cursor-pointer"
+        phx-click="deselect-item"
+        phx-value-item="<%= item %>"><%= item %></div>
+    <% end %>
+  </div>
 </div>

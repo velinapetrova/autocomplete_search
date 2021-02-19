@@ -13,6 +13,7 @@ import "../css/app.scss"
 //     import socket from "./socket"
 //
 import "phoenix_html"
+import "alpinejs";
 import {Socket} from "phoenix"
 import NProgress from "nprogress"
 import {LiveSocket} from "phoenix_live_view"

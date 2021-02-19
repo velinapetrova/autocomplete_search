@@ -8,4 +8,10 @@ defmodule AutocompleteSearchWeb.PageLiveTest do
     assert disconnected_html =~ "Search Component"
     assert render(page_live) =~ "Search Component"
   end
+
+  test "load search component", %{conn: conn} do
+    {:ok, _view, html} = live_isolated(conn, AutocompleteSearchWeb.PageLive)
+
+    assert html =~ "Search:"
+  end
 end
